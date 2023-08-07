@@ -7,9 +7,31 @@
     <title>Rock Paper Scissors, baby!</title>
 </head>
 <body>
+
+    <!--
+        PSEUDOCODE
+
+        Prompt the user for a selection out of 3 options: Rock, Paper and Scissors
+        Store the user's answer in a variable
+        Run the function to generate a random option by the computer, and store it
+        Compare the computer and the user's answer and define an outcome
+        Present the outcome to the user
+    -->
     
     <script>
-        console.log("Sup!");
+        let userAnswer = 0;
+        let computerAnswer = 0;
+
+        resolveAnswer() {
+            computerAnswer = Math.floor(Math.random() * 3) + 1;
+            console.log("Computer answer is " + computerAnswer);
+            
+        }
+
+        console.log("Choose an option!");
+        console.log("1: Rock; 2: Paper; 3: Scissors;");
+        userAnswer = prompt("What is your choice?");
+        resolveAnswer();
     </script>
     
 </body>
