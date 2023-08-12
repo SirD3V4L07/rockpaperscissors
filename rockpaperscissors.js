@@ -29,27 +29,27 @@ function getComAnswer() {
 }
 
 
-function getOutcome() {
+function getOutcome(userChoice, computerChoice) {
     /* First checks for draw, which takes care of 3 out of 9 possible outcomes */
 
-    if (userAnswer == computerAnswer) {
+    if (userChoice == computerChoice) {
         alert("Draw! Try again.");
         console.log("Entered draw state");
     } else {
 
         /* Checks for the remaining possible outcomes */
-        switch (userAnswer) {
-            case "Rock": switch (computerAnswer) {
+        switch (userChoice) {
+            case "Rock": switch (computerChoice) {
                 case "Paper": alert("You lose!"); break;
                 case "Scissors": alert("You win!"); break;
             }; break;
             
-            case "Paper": switch (computerAnswer) {
+            case "Paper": switch (computerChoice) {
                 case "Rock": alert("You win!"); break;
                 case "Scissors": alert("You lose!"); break;
             }; break;
 
-            case "Scissors": switch (computerAnswer) {
+            case "Scissors": switch (computerChoice) {
                 case "Rock": alert("You lose!"); break;
                 case "Paper": alert("You win!"); break;
             }; break;
@@ -59,7 +59,7 @@ function getOutcome() {
 }
 
 console.log("Choose an option!");
-console.log("1: Rock; 2: Paper; 3: Scissors;");
+console.log("| Rock | - | Paper | - | Scissors |");
 getUserAnswer();   
 getComAnswer();    
-getOutcome(); 
+getOutcome(userAnswer, computerAnswer); 
