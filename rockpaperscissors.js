@@ -1,6 +1,11 @@
 let userAnswer = "NoAnswer";
 let computerAnswer = "NoAnswer";
-let winner = null;
+let playerRoundScore = 0;
+let comRoundScore = 0;
+let playAgain = null;
+let playerMatchCount = 0;
+let comMatchCount = 0;
+
 
 
 function getUserAnswer() {
@@ -30,6 +35,19 @@ function convertUserAnswer(userChoice) {
     userAnswer = userChoice;
 }
 
+function convertPlayAgainAnswer() {
+    /* Convert first character to uppercase */
+    let firstCharacter = playAgain.slice(0,1);
+    firstCharacter = firstCharacter.toUpperCase();
+
+    /* Convert remaining characters to lowercase */
+    let remainingCharacters = playAgain.slice(1, playAgain.length);
+    remainingCharacters = remainingCharacters.toLowerCase();
+
+    /* Put together final result, capitalized string */
+    playAgain = firstCharacter + remainingCharacters;
+}
+
 
 function getComAnswer() {
     computerAnswer = Math.floor(Math.random() * 3) + 1;
@@ -55,26 +73,82 @@ function getOutcome(userChoice, computerChoice) {
         /* Checks for the remaining possible outcomes */
         switch (userChoice) {
             case "Rock": switch (computerChoice) {
-                case "Paper": alert("You lose!"); break;
-                case "Scissors": alert("You win!"); break;
+                case "Paper": {alert("You lose!"); comRoundScore += 1; break;}
+                case "Scissors": {alert("You win!"); playerRoundScore += 1; break;}
             }; break;
             
             case "Paper": switch (computerChoice) {
-                case "Rock": alert("You win!"); break;
-                case "Scissors": alert("You lose!"); break;
+                case "Rock": {alert("You win!"); playerRoundScore += 1; break;}
+                case "Scissors": {alert("You lose!"); comRoundScore += 1; break;}
             }; break;
 
             case "Scissors": switch (computerChoice) {
-                case "Rock": alert("You lose!"); break;
-                case "Paper": alert("You win!"); break;
+                case "Rock": {alert("You lose!"); comRoundScore += 1; break;}
+                case "Paper": {alert("You win!"); playerRoundScore += 1; break;}
             }; break;
         }
     }
     
 }
 
-console.log("Choose an option!");
-console.log("| Rock | - | Paper | - | Scissors |");
-getUserAnswer();   
-getComAnswer();    
-getOutcome(userAnswer, computerAnswer); 
+function game() {
+    let roundCounter = 1;    
+    
+    
+    console.log("=== NEW GAME ===");
+    playerRoundScore = 0;
+    comRoundScore = 0;
+
+    do {
+        console.log("Round " + roundCounter + "!");
+        console.log("Choose an option!");
+        console.log("| Rock | - | Paper | - | Scissors |");
+        getUserAnswer();   
+        getComAnswer();    
+        getOutcome(userAnswer, computerAnswer); 
+        console.log("Current score:");
+        console.log("Player: " + playerRoundScore);
+        console.log("COM: " + comRoundScore);
+        roundCounter += 1;
+    } while (roundCounter < 6);
+
+    /**
+     * Resolve match winner
+     */
+
+    if (playerRoundScore > comRoundScore) {
+        console.log("YOU WIN THE MATCH!");
+        alert("YOU WIN THE MATCH!");
+        playerMatchCount += 1;
+    } else if (comRoundScore > playerRoundScore) {
+        console.log("YOU LOSE");
+        alert("YOU LOSE!");
+        comMatchCount += 1;
+    } else {
+        console.log("It's a draw!");
+    }
+
+    console.log("Matches Won:");
+    console.log("Player: " + playerMatchCount);
+    console.log("COM: " + comMatchCount);
+
+
+}
+
+
+do {
+    game();    
+
+    do {
+        playAgain = prompt("Would you like to play again? (Yes/No)");
+        convertPlayAgainAnswer();
+        
+        if (playAgain != "Yes" && playAgain != "No") {
+            alert("Invalid option! Try again.");
+        }
+    } while (playAgain != "Yes"  && playAgain != "No");
+
+    
+} while (playAgain == "Yes");
+
+console.log("Thanks for playing!");
