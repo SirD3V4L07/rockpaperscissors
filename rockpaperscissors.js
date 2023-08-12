@@ -6,6 +6,7 @@ let winner = null;
 function getUserAnswer() {
     do {
         userAnswer = prompt("What is your choice?");
+        convertUserAnswer(userAnswer);
         
         if (userAnswer != "Rock" && userAnswer != "Paper" && userAnswer != "Scissors") {
             alert("Invalid option! Try again.");
@@ -13,6 +14,20 @@ function getUserAnswer() {
     } while (userAnswer != "Rock" && userAnswer != "Paper" && userAnswer != "Scissors");
     
     console.log("User answer is " + userAnswer);
+}
+
+function convertUserAnswer(userChoice) {
+    /* Convert first character to uppercase */
+    let firstCharacter = userChoice.slice(0,1);
+    firstCharacter = firstCharacter.toUpperCase();
+
+    /* Convert remaining characters to lowercase */
+    let remainingCharacters = userChoice.slice(1, userChoice.length);
+    remainingCharacters = remainingCharacters.toLowerCase();
+
+    /* Put together final result, capitalized string */
+    userChoice = firstCharacter + remainingCharacters;
+    userAnswer = userChoice;
 }
 
 
