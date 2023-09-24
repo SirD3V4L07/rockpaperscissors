@@ -99,7 +99,7 @@ function game() {
     playerRoundScore = 0;
     comRoundScore = 0;
 
-    do {
+   // do {
         console.log("Round " + roundCounter + "!");
         console.log("Choose an option!");
         console.log("| Rock | - | Paper | - | Scissors |");
@@ -109,8 +109,8 @@ function game() {
         console.log("Current score:");
         console.log("Player: " + playerRoundScore);
         console.log("COM: " + comRoundScore);
-        roundCounter += 1;
-    } while (roundCounter < 6);
+       // roundCounter += 1;
+   // } while (roundCounter < 6);
 
     /**
      * Resolve match winner
