@@ -116,7 +116,7 @@ function game() {
      * Resolve match winner
      */
 
-    if (playerRoundScore > comRoundScore) {
+  /*  if (playerRoundScore > comRoundScore) {
         console.log("YOU WIN THE MATCH!");
         alert("YOU WIN THE MATCH!");
         playerMatchCount += 1;
@@ -130,7 +130,7 @@ function game() {
 
     console.log("Matches Won:");
     console.log("Player: " + playerMatchCount);
-    console.log("COM: " + comMatchCount);
+    console.log("COM: " + comMatchCount);*/
 
 
 }
