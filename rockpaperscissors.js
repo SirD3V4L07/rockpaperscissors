@@ -6,15 +6,25 @@ let playAgain = null;
 let playerMatchCount = 0;
 let comMatchCount = 0;
 
+/**
+ * NODES
+ */
+const rockButtonNode = document.querySelector("#rock");
+const paperButtonNode = document.querySelector("#paper");
+const scissorsButtonNode = document.querySelector("#scissors");
+const roundResultNode = document.querySelector("#round-result");
+const playerRoundScoreNode = document.querySelector("#player-round-score");
+const computerRoundScoreNode = document.querySelector("#computer-round-score");
+const gameScoreNode = document.querySelector("#game-score");
 
-const rockButton = document.querySelector("#rock");
-const paperButton = document.querySelector("#paper");
-const scissorsButton = document.querySelector("#scissors");
-const roundResult = document.querySelector("#roundResult");
 
-rockButton.addEventListener("click", function(){game("Rock");});
-paperButton.addEventListener("click", function(){game("Paper");});
-scissorsButton.addEventListener("click", function(){game("Scissors");});
+
+/**
+ * EVENT LISTENERS
+ */
+rockButtonNode.addEventListener("click", function(){game("Rock");});
+paperButtonNode.addEventListener("click", function(){game("Paper");});
+scissorsButtonNode.addEventListener("click", function(){game("Scissors");});
 
 function game(userAnswer) {
     /**
@@ -28,9 +38,17 @@ function game(userAnswer) {
      */
     
     getOutcome(userAnswer, getComAnswer());
+    updateScores();
 
 }
 
+function updateScores() {
+    playerRoundScoreNode.innerHTML = `Player Score: ${playerRoundScore}`;
+    computerRoundScoreNode.innerHTML = `COM Score: ${comRoundScore}`;
+    gameScoreNode.innerHTML = `Game Score: <br> 
+        Player: ${playerMatchCount} <br> 
+        COM: ${comMatchCount}`;
+}
 
 function getComAnswer() {
     computerAnswer = Math.floor(Math.random() * 3) + 1;
@@ -49,12 +67,11 @@ function getComAnswer() {
 
 function getOutcome(userChoice, computerChoice) {
     /* First checks for draw, which takes care of 3 out of 9 possible outcomes */
-
+    
     if (userChoice == computerChoice) {
         displayRoundResult("Draw! Try again.");
         console.log("Entered draw state");
     } else {
-
         /* Checks for the remaining possible outcomes */
         switch (userChoice) {
             case "Rock": switch (computerChoice) {
@@ -72,10 +89,9 @@ function getOutcome(userChoice, computerChoice) {
                 case "Paper": {displayRoundResult("You win!"); playerRoundScore += 1; break;}
             }; break;
         }
-    }
-    
+    }    
 }
 
 function displayRoundResult (resultString) {
-    roundResult.textContent = resultString;
+    roundResultNode.textContent = resultString;
 }
