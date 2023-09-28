@@ -1,12 +1,18 @@
 body {
     display:flex;
     align-items: center;
-    vertical-align: middle;
+    justify-content: center;
+    background-color: darkslategrey;
+    width:100vw;
+    height:100vh;
 }
 
 button {
     width:200px;
     height:200px;
     background-color: darkgoldenrod;
-    color:darkslategray;
+    color:antiquewhite;
+    margin:10px;
+    border-radius: 10px;
+    font-size: 2em;
 }

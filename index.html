@@ -5,15 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="rockpaperscissors.js"></script>
+    <script src="rockpaperscissors.js" defer></script>
     <title>Rock Paper Scissors, baby!</title>
 </head>
 <body>
 
-   <button>Rock</button>
-   <button>Paper</button>
-   <button>Scissors</button>    
+    <div id="mainContainer">
+        <div id="rpsContainer">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>  
+        </div>  
+        <div id="infoContainer">
+            <div id="roundResult"></div>
+            <div id="roundScore"></div>
+            <div id="gameScore"></div>
+        </div>
+    </div>
    
+   <!--
+        PSEUDOCODE
+
+        Add event listeners to buttons
+        Each button will run the game function with a different parameter
+        The outcome is displayed in a div along with total score
+        After 5 rounds, a winner is announced
+        Once the game is complete, clicking one of the buttons will start the game again
+        Display total games won and lost
+
+   -->
     
 </body>
 </html>
