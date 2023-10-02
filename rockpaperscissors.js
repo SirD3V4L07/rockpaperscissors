@@ -16,8 +16,7 @@ const roundResultNode = document.querySelector("#round-result");
 const playerRoundScoreNode = document.querySelector("#player-round-score");
 const computerRoundScoreNode = document.querySelector("#computer-round-score");
 const gameScoreNode = document.querySelector("#game-score");
-
-
+const matchOutcome = document.querySelector("#match-outcome");
 
 /**
  * EVENT LISTENERS
@@ -37,9 +36,29 @@ function game(userAnswer) {
      * Start a new game if an option is clicked again
      */
     
+    matchOutcome.innerHTML = "";
     getOutcome(userAnswer, getComAnswer());
     updateScores();
+    checkMatch();
 
+}
+
+function checkMatch() {
+    if ((playerRoundScore + comRoundScore) >= 5) {
+        if (playerRoundScore > comRoundScore) {
+            playerMatchCount += 1;
+            updateScores();
+            matchOutcome.innerHTML = "You won this match!"
+        } 
+        if (comRoundScore > playerRoundScore) {
+            comMatchCount += 1;
+            updateScores();
+            matchOutcome.innerHTML = "COM won this match!"
+        }
+        playerRoundScore = 0;
+        comRoundScore = 0;
+        
+    }
 }
 
 function updateScores() {
