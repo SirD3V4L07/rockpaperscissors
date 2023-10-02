@@ -27,13 +27,9 @@ scissorsButtonNode.addEventListener("click", function(){game("Scissors");});
 
 function game(userAnswer) {
     /**
-     * Generate COM answer
-     * Display round's result
-     * Display total rounds score
-     * Once 5 rounds are reached, display game outcome
-     * Display games won and lost
-     * Display "choose an option to start a new game"
-     * Start a new game if an option is clicked again
+     Add images to buttons
+     Add title header
+     
      */
     
     matchOutcome.innerHTML = "";
